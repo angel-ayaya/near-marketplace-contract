@@ -1,0 +1,10 @@
+{
+  "name": "near-marketplace-contract",
+  "version": "1",
+  "description": "No desc",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "near-sdk-as": "^3.2.3"
+  }
+}

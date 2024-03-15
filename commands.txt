@@ -1,0 +1,21 @@
+near call $CONTRACT_ID setProduct '{"id": "0", "productName": "tea"}' --accountId=testenoid.testnet
+near view $CONTRACT_ID getProduct '{"id": "0"}'
+near deploy $CONTRACT_ID $WASM_FILE
+
+// deploy contact using contracto.testenoid.testnet
+near deploy contractor.testenoid.testnet build/release/near-marketplace-contract.wasm
+
+near create-account contractor.testenoid.testnet --masterAccount testenoid.testnet --initialBalance 0.5
+
+
+// Call setProduct Method
+near call contractor.testenoid.testnet setProduct '{"product": {"id": "1", "name": "BERBENA", "description": "Grilled chicken and beef served with vegetables and chips.", "location": "Berlin, Germany", "price": "100000000000000000000000", "image": "https://i.imgur.com/yPreV19.png"}}' --accountId=testenoid.testnet
+
+// Call getProduct Method
+near view contractor.testenoid.testnet getProduct '{"id": "0"}'
+
+// Call Buy Method
+near call contractor.testenoid.testnet buyProduct '{"productId": "1"}' --depositYocto=100000000000000000000000 --accountId=buyeraccount.testenoid.testnet
+
+
+near create-account buyeraccount.testenoid.testnet --masterAccount testenoid.testnet --initialBalance 0.5
